@@ -1,0 +1,65 @@
+@extends('layouts.app')
+
+@section('title') @lang('translation.Submodules') @endsection
+
+@section('css')
+    <!-- DataTables -->
+    <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Sweet Alert-->
+    <link href="{{ URL::asset('/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Select2 -->
+    <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
+@section('content')
+    @component('components.breadcrumb')
+        {{-- @slot('li_1') Utility @endslot --}}
+        {{-- @slot('page_title') Starter Page @endslot --}}
+    @endcomponent
+
+    @livewire('submodules.controller')
+@endsection
+
+@section('script')
+    <!-- Required datatable js -->
+    <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <!-- Sweet Alerts js -->
+    <script src="{{ URL::asset('/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+
+    <script>
+        //executar javascript durante certos eventos
+        document.addEventListener("DOMContentLoaded", () => {
+            //ao entrar no componente
+            configurarDataTable(1);
+            showTooltips();
+            hideTooltips();
+
+            //Inicia campos com Select2
+            $('.select2_module_id').select2();
+
+            //ao navegar pelo componente
+            Livewire.hook('message.processed', (message, component) => {
+                configurarDataTable(1);
+                showTooltips();
+                hideTooltips();
+
+                //Inicia campos com Select2
+                $('.select2_module_id').select2();
+
+                //Verificar campos Select2 para Disabilitar
+                if ($('#showMode').val() == 1) {
+                    $(".select2_module_id").prop("disabled", true);
+                } else {
+                    $(".select2_module_id").prop("disabled", false);
+                }
+
+                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {return new bootstrap.Popover(popoverTriggerEl)})
+            })
+        });
+    </script>
+@endsection

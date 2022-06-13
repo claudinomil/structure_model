@@ -15,13 +15,6 @@
         <span class="badge bg-danger rounded-pill">{{ $notificationsCount }}</span>
     </button>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
-        <div class="p-3">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h6 class="m-0" key="t-notifications"> @lang('translation.Notifications') </h6>
-                </div>
-            </div>
-        </div>
         <div data-simplebar style="max-height: 230px;">
             @foreach($notifications as $key => $notification)
                 @php
@@ -32,17 +25,16 @@
                     $dias = floor($segundos / (60 * 60 * 24));
 
                     //Dados da Notificação
+                    $id = $notification->id;
                     $avatar = $notification->avatar;
                     $name = $notification->name;
                     $title = $notification->title;
                     $notification = $notification->notification;
 
-                    if (strlen($notification) > 35) {$notification = substr($notification, 0, 35).'...';}
+                    if (strlen($notification) > 35) {$notification = substr($notification, 0, 50).'...';}
                 @endphp
 
-                <div class="dropdown-divider"></div>
-
-                <a href="#" class="text-reset notification-item">
+                <a href="{{ url('notifications-read/'.$id) }}" class="text-reset notification-item">
                     <div class="d-flex">
                         <img src="{{ URL::asset ($avatar) }}" class="me-3 rounded-circle avatar-xs" alt="user-pic" title="{{ $name }}">
                         <div class="flex-grow-1">
@@ -61,6 +53,11 @@
                     </div>
                 </a>
             @endforeach
+        </div>
+        <div class="p-2 border-top d-grid">
+            <a class="btn btn-sm btn-link font-size-14 text-center" href="{{ route('notifications') }}">
+                <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">@lang('translation.Notifications')</span>
+            </a>
         </div>
     </div>
 </div>

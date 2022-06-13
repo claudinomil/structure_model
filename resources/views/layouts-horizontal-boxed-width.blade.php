@@ -10,7 +10,7 @@
 
     @component('components.breadcrumb')
         @slot('li_1') Layouts @endslot
-        @slot('title') Boxed Width @endslot
+        @slot('page_title') Boxed Width @endslot
     @endcomponent
 
     <div class="row">

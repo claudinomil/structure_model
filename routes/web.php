@@ -11,6 +11,33 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
+
+
+
+
+Route::get('/modules', function () {
+    return view('livewire.modules.index');
+})->name('modules');
+
+
+Route::get('/submodules', function () {
+    return view('livewire.submodules.index');
+})->name('submodules');
+
+Route::get('/notifications', function () {
+    return view('livewire.notifications.index');
+})->name('notifications');
+
+Route::get('/notifications-read/{registro_id}', function ($registro_id) {
+    return view('livewire.notifications.index', compact('registro_id'));
+})->name('notificationsRead');
+
+Route::get('/tools', function () {
+    return view('livewire.tools.index');
+})->name('tools');
+
+
+
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 //Language Translation
@@ -42,4 +69,3 @@ Route::group(['middleware' => ['auth']], function() {
 //    Route::post('calendarsAjax', [CalendarController::class, 'ajax']);
 
 });
-

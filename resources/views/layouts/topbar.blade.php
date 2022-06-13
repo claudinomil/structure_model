@@ -33,65 +33,14 @@
                 </button>
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
-                        <div class="col-sm-8">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14 mt-0" key="t-ui-components">@lang('translation.UI_Components')</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-lightbox">@lang('translation.Lightbox')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-range-slider">@lang('translation.Range_Slider')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-sweet-alert">@lang('translation.Sweet_Alert')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-rating">@lang('translation.Rating')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-forms">@lang('translation.Forms')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-tables">@lang('translation.Tables')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-charts">@lang('translation.Charts')</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14 mt-0" key="t-applications">@lang('translation.Applications')</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-ecommerce">@lang('translation.Ecommerce')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-calendar">@lang('translation.Calendars')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-email">@lang('translation.Email')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-projects">@lang('translation.Projects')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-tasks">@lang('translation.Tasks')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-contacts">@lang('translation.Contacts')</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14 mt-0" key="t-extra-pages">@lang('translation.Extra_Pages')</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-light-sidebar">@lang('translation.Light_Sidebar')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-compact-sidebar">@lang('translation.Compact_Sidebar')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-horizontal">@lang('translation.Horizontal_layout')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-maintenance">@lang('translation.Maintenance')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-coming-soon">@lang('translation.Coming_Soon')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-timeline">@lang('translation.Timeline')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-faqs">@lang('translation.FAQs')</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="col-sm-10">
+                            <?php
+                            $homeController = new \App\Http\Controllers\HomeController();
+                            echo $homeController->menu(3);
+                            ?>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5 class="font-size-14 mt-0" key="t-ui-components">@lang('translation.UI_Components')</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-lightbox">@lang('translation.Lightbox')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-range-slider">@lang('translation.Range_Slider')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-sweet-alert">@lang('translation.Sweet_Alert')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-rating">@lang('translation.Rating')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-forms">@lang('translation.Forms')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-tables">@lang('translation.Tables')</a></li>
-                                        <li><a href="javascript:void(0);" key="t-charts">@lang('translation.Charts')</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-5">
-                                    <div>
-                                        <img src="{{ URL::asset ('/assets/images/megamenu-img.png') }}" alt="" class="img-fluid mx-auto d-block">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-sm-2">
+                            <img src="{{ URL::asset ('/assets/images/megamenu-img.png') }}" alt="" class="img-fluid mx-auto d-block">
                         </div>
                     </div>
                 </div>
@@ -120,55 +69,9 @@
                     </a>
                 </div>
             </div>
-            <div class="dropdown d-none d-lg-inline-block ms-1">
-                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-customize"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <div class="px-lg-2">
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/github.png') }}" alt="Github">
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/bitbucket.png') }}" alt="bitbucket">
-                                    <span>Bitbucket</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/dribbble.png') }}" alt="dribbble">
-                                    <span>Dribbble</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/dropbox.png') }}" alt="dropbox">
-                                    <span>Dropbox</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/mail_chimp.png') }}" alt="mail_chimp">
-                                    <span>Mail Chimp</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/slack.png') }}" alt="slack">
-                                    <span>Slack</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @include('layouts.tools')
+
             <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
                     <i class="bx bx-fullscreen"></i>

@@ -6,7 +6,7 @@
 <?php $__env->startSection('content'); ?>
     <?php $__env->startComponent('components.breadcrumb'); ?>
         <?php $__env->slot('li_1'); ?> Contacts <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> Profile <?php $__env->endSlot(); ?>
+        <?php $__env->slot('page_title'); ?> Profile <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
 
     <div class="row">

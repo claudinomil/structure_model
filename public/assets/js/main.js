@@ -1,3 +1,52 @@
+function configurarDataTable(op) {
+    if (op == 1) {
+        $('.class-datatable').DataTable({
+            language: {
+                pageLength: {
+                    '-1': 'Mostrar todos os registros',
+                    '_': 'Mostrar %d registros'
+                },
+                lengthMenu: 'Exibir _MENU_ resultados por página',
+                emptyTable: 'Nenhum registro encontrado',
+                info: 'Mostrando de _START_ até _END_ de _TOTAL_ registros',
+                infoEmpty: 'Mostrando 0 até 0 de 0 registros',
+                infoFiltered: '(Filtrados de _MAX_ registros)',
+                infoThousands: '.',
+                loadingRecords: 'Carregando...',
+                processing: 'Processando...',
+                zeroRecords: 'Nenhum registro encontrado',
+                search: 'Pesquisar',
+                paginate: {
+                    next: 'Próximo',
+                    previous: 'Anterior',
+                    first: 'Primeiro',
+                    last: 'Último'
+                }
+            },
+            bDestroy: true,
+            responsive: true,
+            lengthChange: true,
+            autoWidth: true
+        });
+    }
+}
+
+
+function showTooltips() {
+    $('[data-bs-toggle="tooltip"]').tooltip({ boundary: 'window' });
+}
+
+function hideTooltips() {
+    //Remove os Tooltips
+    $('[data-bs-toggle="tooltip"]').tooltip('hide');
+
+    //Remove os que perderam a referencia
+    $('[role="tooltip"]').hide();
+}
+
+
+
+
 /*!
 FullCalendar v5.8.0
 Docs & License: https://fullcalendar.io/
@@ -6588,7 +6637,7 @@ var FullCalendar = (function (exports) {
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -13576,7 +13625,7 @@ var FullCalendar = (function (exports) {
             if (!slatCoords) {
                 return null;
             }
-            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date, 
+            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date,
                 // key doesn't matter. will only ever be one
                 key: i }, function (rootElRef, classNames, innerElRef, innerContent) { return (createElement("div", { ref: rootElRef, className: ['fc-timegrid-now-indicator-line'].concat(classNames).join(' '), style: { top: slatCoords.computeDateTop(seg.start, date) } }, innerContent)); })); });
         };

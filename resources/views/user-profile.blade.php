@@ -8,7 +8,7 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1') Contacts @endslot
-        @slot('title') Profile @endslot
+        @slot('page_title') Profile @endslot
     @endcomponent
 
     <div class="row">

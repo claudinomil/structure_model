@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
+use App\Models\Submodule;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -123,5 +126,126 @@ class HomeController extends Controller
                 ], 200); // Status code here
             }
         }
+    }
+
+    public function menu($tp)
+    {
+        //Reset cached roles and permissions
+        //app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
+        $modules = Module::all()->sortBy('ordem_visualizacao');
+        $submodules = Submodule::all()->sortBy('ordem_visualizacao');
+
+        $menu = '';
+
+        //Menu Verticarl
+        if ($tp == 1) {
+            $menu .= "<ul class='metismenu list-unstyled' id='side-menu'>
+                            <li class='menu-title' key='t-menu'>@lang('translation.Menu')</li>";
+        }
+
+        //Menu Horizontal
+        if ($tp == 2) {
+            $menu .= "<ul class=\"navbar-nav\">";
+        }
+
+        //Mega Menu
+        if ($tp == 3) {
+            $menu .= "<ul class='list-unstyled megamenu-list'>
+                        <div class='row'>";
+        }
+
+        foreach ($modules as $key => $module) {
+            $modOk = 1;
+            $qtdSubmodules = 0;
+            foreach ($submodules as $key => $submodule) {
+                if ($module->id == $submodule->module_id) {
+                    //if (auth()->user()->can($submodule->prefix_permission.'-list')) {
+                        if ($modOk == 1) {
+                            $modOk = 0;
+
+                            //verificando se Module está aberto (menu-open)'''''''''''''''''''''''''''''''''''''''''''
+                            $menuModuleOpen = '';
+                            if (isset($menuModuleId)) {if ($menuModuleId == $module->id) {$menuModuleOpen = 'menu-open';}}
+                            //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+                            //Menu Verticarl
+                            if ($tp == 1) {
+                                $menu .= "<li>
+                                            <a href='javascript: void(0);' class='has-arrow waves-effect'>
+                                                <i class='$module->menu_icon' style='font-size:16px;'></i><span key='t-$module->menu_route'>$module->name</span>
+                                            </a>
+                                            <ul class='sub-menu' aria-expanded='true'>";
+                            }
+
+                            //Menu Horizontal
+                            if ($tp == 2) {
+                                $menu .= "<li class='nav-item dropdown'>
+                                            <a class='nav-link dropdown-toggle arrow-none' href='#' id='topnav-layout' role='button'>
+                                                <i class='$module->menu_icon me-2'></i><span key='t-$module->menu_route'>$module->name</span> <div class='arrow-down'></div>
+                                            </a>
+                                            <div class='dropdown-menu' aria-labelledby='topnav-layout'>
+                                                <div class='dropdown'>";
+                            }
+                        }
+
+                        //verificando se Submodule está ativo (active)''''''''''''''''''''''''''''''''''''''''''''''''
+                        $menuSubmoduleActive = '';
+                        if (isset($menuSubmoduleId)) {if ($menuSubmoduleId == $submodule->id) {$menuSubmoduleActive = 'active';}}
+                        //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+                        $qtdSubmodules++;
+
+                        //Menu Verticarl
+                        if ($tp == 1) {
+                            $menu .= "<li><a href='$submodule->menu_route' key='t-$submodule->route'>$submodule->name</a></li>";
+                        }
+
+                        //Menu Horizontal
+                        if ($tp == 2) {
+                            $menu .= "<a href='$submodule->menu_route' class='dropdown-item' key='t-$submodule->menu_route'>$submodule->name</a>";
+                        }
+
+                        //Mega Menu
+                        if ($tp == 3) {
+                            $menu .= "<div class='col-md-2'>
+                                        <li>
+                                            <a href='$submodule->menu_route' key='t-$submodule->menu_route'>$submodule->name</a>
+                                        </li>
+                                    </div>";
+                        }
+                    //}
+                }
+            }
+
+            if ($modOk == 0) {
+                //Menu Verticarl
+                if ($tp == 1) {
+                    $menu .= "</ul></li>";
+                }
+
+                //Menu Horizontal
+                if ($tp == 2) {
+                    $menu .= "</div></div></li>";
+                }
+            }
+        }
+
+        //Menu Verticarl
+        if ($tp == 1) {
+            $menu .= "</ul>";
+        }
+
+        //Menu Horizontal
+        if ($tp == 2) {
+            $menu .= "</ul>";
+        }
+
+        //Mega Menu
+        if ($tp == 3) {
+            $menu .= "</div></ul>";
+        }
+
+        return $menu;
     }
 }

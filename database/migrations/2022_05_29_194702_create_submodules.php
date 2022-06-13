@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('menu_text');
             $table->string('menu_url');
+            $table->string('menu_route');
             $table->string('menu_icon');
             $table->string('prefix_permission')->unique();
             $table->string('prefix_route')->unique();

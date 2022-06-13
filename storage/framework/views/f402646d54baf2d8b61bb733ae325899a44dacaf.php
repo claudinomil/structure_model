@@ -33,65 +33,14 @@
                 </button>
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
-                        <div class="col-sm-8">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14 mt-0" key="t-ui-components"><?php echo app('translator')->get('translation.UI_Components'); ?></h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-lightbox"><?php echo app('translator')->get('translation.Lightbox'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-range-slider"><?php echo app('translator')->get('translation.Range_Slider'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-sweet-alert"><?php echo app('translator')->get('translation.Sweet_Alert'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-rating"><?php echo app('translator')->get('translation.Rating'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-forms"><?php echo app('translator')->get('translation.Forms'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-tables"><?php echo app('translator')->get('translation.Tables'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-charts"><?php echo app('translator')->get('translation.Charts'); ?></a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14 mt-0" key="t-applications"><?php echo app('translator')->get('translation.Applications'); ?></h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-ecommerce"><?php echo app('translator')->get('translation.Ecommerce'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-calendar"><?php echo app('translator')->get('translation.Calendars'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-email"><?php echo app('translator')->get('translation.Email'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-projects"><?php echo app('translator')->get('translation.Projects'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-tasks"><?php echo app('translator')->get('translation.Tasks'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-contacts"><?php echo app('translator')->get('translation.Contacts'); ?></a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14 mt-0" key="t-extra-pages"><?php echo app('translator')->get('translation.Extra_Pages'); ?></h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-light-sidebar"><?php echo app('translator')->get('translation.Light_Sidebar'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-compact-sidebar"><?php echo app('translator')->get('translation.Compact_Sidebar'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-horizontal"><?php echo app('translator')->get('translation.Horizontal_layout'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-maintenance"><?php echo app('translator')->get('translation.Maintenance'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-coming-soon"><?php echo app('translator')->get('translation.Coming_Soon'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-timeline"><?php echo app('translator')->get('translation.Timeline'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-faqs"><?php echo app('translator')->get('translation.FAQs'); ?></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="col-sm-10">
+                            <?php
+                            $homeController = new \App\Http\Controllers\HomeController();
+                            echo $homeController->menu(3);
+                            ?>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5 class="font-size-14 mt-0" key="t-ui-components"><?php echo app('translator')->get('translation.UI_Components'); ?></h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li><a href="javascript:void(0);" key="t-lightbox"><?php echo app('translator')->get('translation.Lightbox'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-range-slider"><?php echo app('translator')->get('translation.Range_Slider'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-sweet-alert"><?php echo app('translator')->get('translation.Sweet_Alert'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-rating"><?php echo app('translator')->get('translation.Rating'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-forms"><?php echo app('translator')->get('translation.Forms'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-tables"><?php echo app('translator')->get('translation.Tables'); ?></a></li>
-                                        <li><a href="javascript:void(0);" key="t-charts"><?php echo app('translator')->get('translation.Charts'); ?></a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-5">
-                                    <div>
-                                        <img src="<?php echo e(URL::asset ('/assets/images/megamenu-img.png')); ?>" alt="" class="img-fluid mx-auto d-block">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-sm-2">
+                            <img src="<?php echo e(URL::asset ('/assets/images/megamenu-img.png')); ?>" alt="" class="img-fluid mx-auto d-block">
                         </div>
                     </div>
                 </div>
@@ -120,55 +69,9 @@
                     </a>
                 </div>
             </div>
-            <div class="dropdown d-none d-lg-inline-block ms-1">
-                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-customize"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <div class="px-lg-2">
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/github.png')); ?>" alt="Github">
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/bitbucket.png')); ?>" alt="bitbucket">
-                                    <span>Bitbucket</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/dribbble.png')); ?>" alt="dribbble">
-                                    <span>Dribbble</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/dropbox.png')); ?>" alt="dropbox">
-                                    <span>Dropbox</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/mail_chimp.png')); ?>" alt="mail_chimp">
-                                    <span>Mail Chimp</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/slack.png')); ?>" alt="slack">
-                                    <span>Slack</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <?php echo $__env->make('layouts.tools', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
             <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
                     <i class="bx bx-fullscreen"></i>

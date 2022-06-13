@@ -10,7 +10,7 @@
 
     @component('components.breadcrumb')
         @slot('li_1') Layouts @endslot
-        @slot('title') Horizontal @endslot
+        @slot('page_title') Horizontal @endslot
     @endcomponent
 
 
